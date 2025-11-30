@@ -27,6 +27,11 @@ cargo install wasm-bindgen-cli
 cargo build --release --target wasm32-unknown-unknown
 wasm-bindgen --out-dir ./out/ --target web ./target/wasm32-unknown-unknown/release/tetris.wasm
 ```
+wasm dev server
+```bash
+just trunk_dev
+```
+
 
 ## 游戏展示
 视频演示：[B站](https://www.bilibili.com/video/BV1y44y1R72Z)

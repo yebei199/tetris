@@ -3,12 +3,14 @@ use std::time::Duration;
 use bevy::prelude::*;
 use board::*;
 use common::*;
+use fps::*;
 use menu::*;
 use piece::*;
 use stats::*;
 
 mod board;
 mod common;
+mod fps;
 mod menu;
 mod piece;
 mod stats;
@@ -44,6 +46,7 @@ fn main() {
             meta_check: bevy::asset::AssetMetaCheck::Never,
             ..default()
         }))
+        .add_plugins(FpsPlugin)
         .init_state::<AppState>()
         .init_state::<GameState>()
         .add_systems(
