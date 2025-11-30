@@ -7,6 +7,13 @@ edition = "2024"
 rand = "0.9"
 getrandom = { version = "0.3", features = ["wasm_js"] }
 
+[profile.release]
+opt-level = "z"     # 针对体积进行极致优化 (比 "s" 更激进)
+lto = true          # 启用链接时间优化 (Link Time Optimization)，这能剔除大量死代码
+codegen-units = 1   # 降低并行编译单元，虽然编译变慢，但优化效果最好
+panic = "abort"     # 发生 panic 直接中止，不打印堆栈信息 (省去大量字符串和格式化代码)
+strip = true        # 自动剥离调试符号 (相当于手动运行 strip)
+
 [dependencies.bevy]
 version = "0.17.3"
 features = [
