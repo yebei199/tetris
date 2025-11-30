@@ -1,6 +1,6 @@
 use std::time::Duration;
 
-use bevy::{prelude::*, transform::TransformSystem};
+use bevy::prelude::*;
 use board::*;
 use common::*;
 use menu::*;
@@ -78,9 +78,7 @@ fn main() {
                 check_collision,
                 remove_piece_component,
                 check_game_over.after(remove_piece_component),
-                check_full_line
-                    .after(remove_piece_component)
-                    .before(TransformSystem::TransformPropagate),
+                check_full_line.after(remove_piece_component),
             )
                 .run_if(in_state(GameState::GamePlaying)),
         )

@@ -7,7 +7,7 @@ edition = "2024"
 rand = "0.9"
 
 [dependencies.bevy]
-version = "0.16"
+version = "0.17.3"
 features = [
     "bmp",
     "wav"
