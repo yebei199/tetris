@@ -31,7 +31,16 @@ fn main() {
             Duration::from_millis(300),
             TimerMode::Once,
         )))
-        .add_plugins(DefaultPlugins)
+        .add_plugins(DefaultPlugins.set(WindowPlugin {
+            primary_window: Some(Window {
+                title: "Tetris".into(),
+                canvas: Some("#bevy-canvas".into()),
+                fit_canvas_to_parent: true,
+                prevent_default_event_handling: false,
+                ..default()
+            }),
+            ..default()
+        }))
         .init_state::<AppState>()
         .init_state::<GameState>()
         .add_systems(
