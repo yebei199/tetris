@@ -4166,6 +4166,7 @@ name = "tetris"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "getrandom 0.3.2",
  "rand",
 ]
 
@@ -4753,6 +4754,7 @@ dependencies = [
  "smallvec",
  "static_assertions",
  "wasm-bindgen",
+ "wasm-bindgen-futures",
  "web-sys",
  "wgpu-core",
  "wgpu-hal",

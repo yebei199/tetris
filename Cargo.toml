@@ -5,10 +5,15 @@ edition = "2024"
 
 [dependencies]
 rand = "0.9"
+getrandom = { version = "0.3", features = ["wasm_js"] }
 
 [dependencies.bevy]
 version = "0.17.3"
 features = [
+    "bevy_render",
+    "bevy_asset",
+    "bevy_winit",
+    "webgpu",
     "bmp",
     "wav"
 ]
