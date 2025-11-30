@@ -40,6 +40,9 @@ fn main() {
                 ..default()
             }),
             ..default()
+        }).set(AssetPlugin {
+            meta_check: bevy::asset::AssetMetaCheck::Never,
+            ..default()
         }))
         .init_state::<AppState>()
         .init_state::<GameState>()

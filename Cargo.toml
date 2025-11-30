@@ -13,6 +13,7 @@ features = [
     "bevy_render",
     "bevy_asset",
     "bevy_winit",
+    "bevy_audio",
     "webgpu",
     "bmp",
     "wav"
