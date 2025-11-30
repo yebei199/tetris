@@ -1,4 +1,4 @@
 [target.wasm32-unknown-unknown]
-runner = "wasm-server-runner"
+runner = "trunk"
 rustflags = ["--cfg", "getrandom_backend=\"wasm_js\""]
 

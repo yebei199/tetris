@@ -5,6 +5,9 @@ use bevy::prelude::*;
 
 use crate::common::{AppState, GameState};
 
+// 为复杂的查询类型定义别名，使用正确的生命周期参数
+type MenuButtonQuery<'w, 's> = Query<'w, 's, (&'static Interaction, &'static MenuButtonAction), (Changed<Interaction>, With<Button>)>;
+
 #[derive(Component)]
 pub struct OnMainMenuScreen;
 
@@ -158,17 +161,14 @@ pub fn setup_game_paused_menu(mut commands: Commands) {
 }
 
 pub fn click_button(
-    mut interaction_query: Query<
-        (&Interaction, &MenuButtonAction),
-        (Changed<Interaction>, With<Button>),
-    >,
+    mut interaction_query: MenuButtonQuery,
     mut app_state: ResMut<NextState<AppState>>,
     mut game_state: ResMut<NextState<GameState>>,
-    mut exit: EventWriter<AppExit>,
+    mut exit: MessageWriter<AppExit>,
 ) {
     for (interaction, menu_button_action) in &mut interaction_query {
-        match *interaction {
-            Interaction::Pressed => match menu_button_action {
+        if *interaction == Interaction::Pressed {
+            match menu_button_action {
                 MenuButtonAction::StartGame => {
                     info!("StartGame button clicked");
                     app_state.set(AppState::InGame);
@@ -193,8 +193,7 @@ pub fn click_button(
                     info!("Quit button clicked");
                     exit.write_default();
                 }
-            },
-            _ => {}
+            }
         }
     }
 }

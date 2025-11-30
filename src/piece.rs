@@ -190,7 +190,7 @@ pub fn move_piece(
             already_down = true;
         }
         // 手动移动
-        if manually_move_timer.0.finished() {
+        if manually_move_timer.0.is_finished() {
             if keyboard_input.pressed(KeyCode::ArrowLeft) && movable.can_left {
                 block.x -= 1;
                 spawn_drop_audio(&mut commands, &game_audios);

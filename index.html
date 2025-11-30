@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <title>Tetris</title>
     <link data-trunk rel="copy-dir" href="assets" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: black;
+      }
+
+      #bevy-canvas {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+      }
+    </style>
   </head>
   <body>
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
       <canvas id="bevy-canvas"></canvas>
-    </div>
   </body>
 </html>
